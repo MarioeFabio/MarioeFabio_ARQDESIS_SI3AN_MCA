@@ -1,4 +1,4 @@
-package project;
+package acessoAC;
 /*import java.sql.Connection;
 import java.sql.DriverManager;
 import javax.swing.JOptionPane;
@@ -67,7 +67,7 @@ public class AcessoDB
 	
 	public static Connection openConnection() throws SQLException 
 	{
-		return DriverManager.getConnection("jdbc:mysql://localhost/tutorial?user=root&password=senha123");
+		return DriverManager.getConnection("jdbc:mysql://localhost/sistemas_cursos?user=root&password=senha123");
 	}
 }
 

@@ -1,8 +1,7 @@
-package Projeto1;
+package toCurso;
 
 public class CursosTO 
 {
-	private int id;
 	private String cod;
 	private String nome;
 	private String numLab;
@@ -15,11 +14,6 @@ public class CursosTO
 	private String dados;
 	private int vagas;
 	private double valor;
-	
-	public void setId(int id)
-	{
-		this.id = id;
-	}
 	
 	public void setCod(String cod)
 	{
@@ -75,10 +69,6 @@ public class CursosTO
 	//
 	//
 	//
-	public int getId()
-	{
-		return id;
-	}
 	
 	public String getCod()
 	{

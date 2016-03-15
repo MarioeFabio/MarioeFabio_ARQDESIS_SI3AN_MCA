@@ -1,8 +1,11 @@
-package Projeto1;
+package modelCurso;
+
+import daoCurso.CursosDAO;
+import toCurso.CursosTO;
 
 public class Curso 
 {
-	private int id;
+
 	private String cod;
 	private String nome;
 	private String numLab;
@@ -12,13 +15,11 @@ public class Curso
 	private String dataIni;
 	private String dataTer;
 	private String horario;
-	//private String dados;
 	private int vagas;
 	private double valor;
 	
-	public Curso(int id, String cod, String nome, String numLab, String regSoft, String material, String livro, String dataIni, String dataTer, String horario, int vagas, double valor)
+	public Curso(String cod, String nome, String numLab, String regSoft, String material, String livro, String dataIni, String dataTer, String horario, int vagas, double valor)
 	{
-		this.id = id;
 		this.cod = cod;
 		this.nome = nome;
 		this.numLab = numLab;
@@ -28,14 +29,8 @@ public class Curso
 		this.dataIni = dataIni;
 		this.dataTer = dataTer;
 		this.horario = horario;
-		//this.dados = dados;
 		this.vagas = vagas;
 		this.valor = valor;
-	}
-	
-	public void setId(int id)
-	{
-		this.id = id;
 	}
 	
 	public void setCod(String cod)
@@ -92,10 +87,6 @@ public class Curso
 	//
 	//
 	//
-	public int getId()
-	{
-		return id;
-	}
 	
 	public String getCod()
 	{
@@ -189,7 +180,6 @@ public class Curso
 		dataIni = to.getDataIni();
 		dataTer = to.getDataTer();
 		horario = to.getHorario();
-		//dados = to.getDados();
 		vagas = to.getVagas();
 		valor = to.getValor();
 		
@@ -208,7 +198,6 @@ public class Curso
 		to.setDataIni(dataIni);
 		to.setDataTer(dataTer);
 		to.setHorario(horario);
-		//to.setDados(dados);
 		to.setVagas(vagas);
 		to.setValor(valor);
 		dao.alterar(to);

@@ -1,4 +1,7 @@
-package project;
+package modelAluno;
+
+import daoAluno.AlunosDAO;
+import toAluno.AlunosTO;
 
 public class Aluno 
 {
@@ -7,10 +10,10 @@ public class Aluno
 	private String rg; 
 	private String end; 
 	private String email; 
-	private int cpf;
-	private int tel;
+	private String cpf;
+	private String tel;
 
-	public Aluno(int id, String nome, String rg, String end, String email, int cpf, int tel)
+	public Aluno(int id, String nome, String rg, String end, String email, String cpf, String tel)
 	{
 		this.id = id;
 		this.nome = nome;
@@ -46,12 +49,12 @@ public class Aluno
 		this.email = email;
 	}
 	
-	public void setCpf(int cpf)
+	public void setCpf(String cpf)
 	{
 		this.cpf = cpf;
 	}
 	
-	public void setTel(int tel)
+	public void setTel(String tel)
 	{
 		this.tel = tel;
 	}
@@ -85,12 +88,12 @@ public class Aluno
 		return email;
 	}
 
-	public int getCpf()
+	public String getCpf()
 	{
 		return cpf;
 	}
 	
-	public int getTel()
+	public String getTel()
 	{
 		return tel;
 	} 
@@ -132,7 +135,7 @@ public class Aluno
 		to.setEmail(email);
 		to.setCpf(cpf);
 		to.setTel(tel);
-		dao.cadastrar(to);
+		dao.alterar(to);
 	}
 	
 	public void deletar()
@@ -141,6 +144,44 @@ public class Aluno
 		AlunosTO to = new AlunosTO();
 		to.setId(id);
 		dao.deletar(to);
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Aluno other = (Aluno) obj;
+		if (cpf != other.cpf)
+			return false;
+		if (email == null) {
+			if (other.email != null)
+				return false;
+		} else if (!email.equals(other.email))
+			return false;
+		if (end == null) {
+			if (other.end != null)
+				return false;
+		} else if (!end.equals(other.end))
+			return false;
+		if (id != other.id)
+			return false;
+		if (nome == null) {
+			if (other.nome != null)
+				return false;
+		} else if (!nome.equals(other.nome))
+			return false;
+		if (rg == null) {
+			if (other.rg != null)
+				return false;
+		} else if (!rg.equals(other.rg))
+			return false;
+		if (tel != other.tel)
+			return false;
+		return true;
 	}
 	
 }

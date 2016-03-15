@@ -1,4 +1,4 @@
-package project;
+package daoAluno;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,6 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import toAluno.AlunosTO;
+import acessoAC.AcessoDB;
 
 public class AlunosDAO 
 {
@@ -16,11 +19,21 @@ public class AlunosDAO
 		{
 			stmt.setString(1,to.getNome());
 			stmt.setString(2,to.getRg());
-			stmt.setInt(3,to.getCpf());
+			stmt.setString(3,to.getCpf());
 			stmt.setString(4,to.getEnd());
 			stmt.setString(5,to.getEmail());
-			stmt.setInt(6,to.getTel());
+			stmt.setString(6,to.getTel());
 			stmt.execute();
+			
+			String sqlSelect = "select LAST_INSERT_ID()";
+			try(PreparedStatement pst1 = conn.prepareStatement(sqlSelect);
+			ResultSet rs = pst1.executeQuery();){
+			if(rs.next()){
+			int idGerado = rs.getInt(1);
+			}
+			} catch (SQLException e) {
+			e.printStackTrace();
+			}
 			//stmt.close();
 
 		} catch (Exception e) {
@@ -43,10 +56,10 @@ public class AlunosDAO
 	    			//to.setId(rs.getInt("id"));	    			
 		            to.setNome(rs.getString("nome"));
 		            to.setRg(rs.getString("rg"));
-		            to.setCpf(rs.getInt("cpf"));
+		            to.setCpf(rs.getString("cpf"));
 		            to.setEnd(rs.getString("logradouro"));
 		            to.setEmail(rs.getString("email"));
-		            to.setTel(rs.getInt("telefone"));
+		            to.setTel(rs.getString("telefone"));
 	    		}
 	    	}
 	    	catch(SQLException e)
@@ -68,10 +81,10 @@ public class AlunosDAO
 		{
 			stmt.setString(1,to.getNome());
 			stmt.setString(2,to.getRg());
-			stmt.setInt(3,to.getCpf());
+			stmt.setString(3,to.getCpf());
 			stmt.setString(4,to.getEnd());
 			stmt.setString(5,to.getEmail());
-			stmt.setInt(6,to.getTel());
+			stmt.setString(6,to.getTel());
 			stmt.setInt(7,to.getId());			
 			stmt.execute();
 			//stmt.close();
